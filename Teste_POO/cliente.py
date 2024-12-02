@@ -4,21 +4,14 @@ class Cliente():
         self.nome = nome 
         self.email = email 
         self.id_cliente = id_cliente
+        Cliente.adicionar_cliente(self)
 
 
     @classmethod
     def adicionar_cliente(cls, cliente):
-        cls.clientes.append({
-            'id_cliente': cliente.id_cliente,
-            'nome': cliente.nome,
-            'email': cliente.email
-        })
-        print(f"Cliente {cliente.nome} adicionado com sucesso!")
-        
+        cls.clientes.append(cliente)
+        print(f"Cliente {cliente.nome} adicionado com sucesso!\n")
 
 
-    @classmethod
-    def gerar_relatorios_clientes(cls, cliente):
-        for cliente in cls.clientes:
-            print(f"ID Cliente: {cliente['id_cliente']}, Nome: {cliente['nome']}, Email: {cliente['email']}")
+   
             

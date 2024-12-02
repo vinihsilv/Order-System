@@ -5,18 +5,14 @@ class Produto():
         self.id_produto = id_produto 
         self.preco = preco
         self.estoque = estoque
+        Produto.adicionar_produto(self)
 
     @classmethod
-    def adicionar_produto(cls,Produto):
-        cls.produtos.append({
-            'id_produto': Produto.id_produto,
-            'nome': Produto.nome,
-            'preco': Produto.preco,
-            'estoque': Produto.estoque
-        })
-        print(f"Produto {Produto.nome} adicionado com sucesso!")
+    def adicionar_produto(cls,produto):
+        cls.produtos.append(produto)
+        print(f"Produto {produto.nome} adicionado com sucesso!\n")
 
-    @classmethod
-    def gerar_relatorio_produtos(csl,produto):
-        for produto in csl.produtos:
-            print(f"ID Produto: {produto['id_produto']}, Nome: {produto['nome']}, Preço: R${produto['preco']}, Estoque: {produto['estoque']}") 
+    def __repr__(self):
+        return f"{self.nome} (R${self.preco:.2f})"
+
+    

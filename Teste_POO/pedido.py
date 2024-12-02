@@ -1,5 +1,3 @@
-from item_pedido import ItemPedido
-from cliente import Cliente
 
 class Pedido():
     pedidos = []
@@ -9,12 +7,9 @@ class Pedido():
         self.cliente = cliente 
         self.itens = itens  
         self.status = status
+        Pedido.pedidos.append(self)
 
-    @classmethod
-    def criar_pedido(cls, id_pedido, cliente, itens, status="pendente"):
-        pedido = cls(id_pedido, cliente, itens, status)
-        cls.pedidos.append(pedido)
-        return pedido
+   
     
     @classmethod
     def processar_pedido(cls, id_pedido):
@@ -25,7 +20,7 @@ class Pedido():
                 break
 
         if not pedido:
-            print(f"Pedido com ID {id_pedido} não encontrado.")
+            print(f"Pedido com ID {id_pedido} não encontrado.\n")
             return
 
         total = 0
@@ -35,9 +30,9 @@ class Pedido():
                 produto.estoque -= item.quantidade  
                 total += produto.preco * item.quantidade  
             else:
-                print(f"Estoque insuficiente para o produto {produto.nome}. Pedido não pode ser processado.")
+                print(f"Estoque insuficiente para o produto {produto.nome}. Pedido não pode ser processado.\n")
                 return
 
         pedido.status = 'Pago' 
-        print(f"Pedido {id_pedido}, status {pedido.status} processado com sucesso. Total a pagar: R${total:.2f}")
+        print(f"Pedido {id_pedido}, status {pedido.status} processado com sucesso. Total a pagar: R${total:.2f}\n")
         return pedido

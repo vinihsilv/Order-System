@@ -1,4 +1,4 @@
-from produto import Produto
+
 
 class ItemPedido():
     def __init__(self, produto, quantidade):
@@ -9,4 +9,4 @@ class ItemPedido():
         return self.produto.preco * self.quantidade
 
     def __repr__(self):
-        return f"ItemPedido({self.produto}, {self.quantidade})"
+        return f"id do produto: {self.produto}, quantidade: {self.quantidade} "
